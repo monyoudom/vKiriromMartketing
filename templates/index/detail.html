@@ -1,0 +1,66 @@
+{% extends 'index/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+              <!-- Heading -->
+<head class="uk-head">
+    <div class="uk-container">
+        <div class="uk-text-center md-heading">
+            <h3 class="uk-heading-primary">vKirirom</h3>
+        </div>
+    </div>
+</head>
+                <!-- End Heading -->
+<div class="uk-container">
+        <div id="content" class="uk-padding-small">
+                <div class="uk-container-large">
+                        <div class="uk-padding intro-text">
+                            <p class="uk-text-center uk-margin-right uk-margin-left">
+                                    vKirirom Pine Resort located on top of kirirom mountain national 
+                                    park provides you once in a life time experiences.
+                            </p>
+                        </div>
+              </div>
+        <!-- block-4 strat here-->
+        <div class="block-4">
+                {% if images is not None %} 
+                <div uk-slideshow="animation: push; autoplay: true; autoplay-interval: 4000">
+                        <div class="uk-position-relative uk-visible-toggle uk-light">
+                            <ul class="uk-slideshow-items">
+                                  
+                                {% for image in images %}
+                                    <li>
+                                        <img src= {{image.file.url}} alt="" uk-cover>
+                                    </li>
+
+                                {% endfor %}
+                            </ul>
+                        
+                            <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+                            <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+                    
+                        </div>
+                    
+                        <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin"></ul>
+                    
+                </div>
+                {% endif %}
+                {% for i in post_details %}
+                <div class="block-4-bottom">
+                     <h2>{{i.title}}</h2>
+                     <p>{{i.detail}}</p>
+                </div>
+                {% empty %}
+                <p>No thing</p>
+                {% endfor %}
+
+              </div>
+    </div>
+</div>
+                
+                
+                
+    
+
+        
+{% endblock %}
